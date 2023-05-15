@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+nav{
+    background-color: black;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    color: blaCK;
+}
+
+
+.logo{
+    margin-top: 15px;
+    margin-left: 20px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo a:visited{
+    color: white;
+}
+
+.conteudo{
+    text-align: center;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+form{
+    display: grid;
+    justify-content: center;
+}
+input{
+    margin-top: 5px;
+    width: 302px;;
+    height: 35px;
+}
+
+button{
+    height: 35px;
+
+    margin-top: 10px;;
+}
