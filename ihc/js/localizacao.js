@@ -78,7 +78,7 @@ function submitForm(event){
 
     //Pegando as info
 
-    start= document.getElementById('start').value;
+    start= document.getElementById('origin').value;
     end = document.getElementById('destination').value;
 
     //Roda a função
@@ -86,6 +86,20 @@ function submitForm(event){
 
     //Reseta o forms
     document.getElementById('form').reset();
+
+
+
+    // Envie uma solicitação AJAX para o código Python
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/calculate_distance", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            document.getElementById("result").innerText = "A distância entre " + response.origin + " e " + response.destination + " é de " + response.distance + " km.";
+        }
+    };
+    xhr.send(JSON.stringify({origin: origin, destination: destination}));
 }
 
 

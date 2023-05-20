@@ -5,6 +5,11 @@ session_start();
         header('Location: ./login.html');
     }
     $logado = $_SESSION['email'];
+
+
+
+
+    
 ?>
 
 
@@ -16,8 +21,22 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=J65EbBCCmVdbvOt91c5vKpjVTrQKjnBP"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=J65EbBCCmVdbvOt91c5vKpjVTrQKjnBP"></script>
+       
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     
+
     <script src="../js/localizacao.js" defer ></script>
 
      <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -42,18 +61,23 @@ session_start();
 
         
         <div class="conteudo">
+        <div class="distance">
+                distancia
+            </div>
             <form id="form">
-                <input type="text" name="start" class="input" id="start" placeholder="Digite o endereço atual">
-                <input type="text" name="end" class="input" id="destination" placeholder="Digite o endereco de partida">
+            <input type="text" id="origin" name="origin" required>
+            <input type="text" id="destination" name="destination" required>
                 <button style="display: none;" type="submit">Get Directions</button>
             </form> 
             <div id="map"></div>
+          
         </div>
             
-      
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=J65EbBCCmVdbvOt91c5vKpjVTrQKjnBP"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=J65EbBCCmVdbvOt91c5vKpjVTrQKjnBP"></script>
        
+        
 </body>
 </html>
