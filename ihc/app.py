@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, send_from_directory, redirect, url_for
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 import time
+from py import validaLogin
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='template')
 
 geolocator = Nominatim(user_agent="my_app")
 
@@ -49,6 +50,42 @@ def calculate_distance_manual(coords1, coords2):
 def show_form():
     with open('index.html', 'r') as file:
         return file.read()
+
+@app.route('/static/css/<path:filename>')
+def css_file(filename):
+    return send_from_directory('static/css', filename)
+
+@app.route('/static/img/<path:filename>')
+def img_file(filename):
+    return send_from_directory('static/img', filename)
+
+@app.route('/static/js/<path:filename>')
+def js_file(filename):
+    return send_from_directory('static/js', filename)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/validaLogin', methods=['POST'])    
+def validaLogina():
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    senha = request.form.get('senha')
+
+    # Chamar função de processamento em outro arquivo
+    resultado = validaLogin.processar_dados(nome, email,senha)
+
+    return resultado
+
+
+@app.route('/sucesso')
+def sucesso():
+    return "Dados processados com sucesso!"
 
 
 if __name__ == '__main__':
